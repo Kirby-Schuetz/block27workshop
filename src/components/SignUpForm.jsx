@@ -10,10 +10,8 @@ export default function SignUpForm({token, setToken}) {
         event.preventDefault()
         try {
             
-            console.log({})
-            
-            
-            const response = await fetch('https://fsa-jwt-practice.herokuapp.com/signup'
+            if ({username}.username.length < 8) {
+                const response = await fetch('https://fsa-jwt-practice.herokuapp.com/signup'
 
                 , {
                     method: "POST",
@@ -24,6 +22,13 @@ export default function SignUpForm({token, setToken}) {
             const result = await response.json()
             console.log(result)
             setToken(result.token)
+            } else {
+                alert("Make your username shorter!!!!")
+                setUsername("")
+            }
+            
+            
+            
 
         } catch (error) {
             setError(error.message)
